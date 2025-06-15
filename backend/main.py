@@ -5,7 +5,6 @@ from chat_bot import ask_groq
 from fastapi.staticfiles import StaticFiles
 
 app = FastAPI()
-app.mount("/", StaticFiles(directory="dist", html=True), name="static")
 
 app.add_middleware(
     CORSMiddleware,
@@ -35,3 +34,5 @@ def chat(req: ChatRequest):
 
     reply = ask_groq(last_user_message, context)
     return {"reply": reply}
+app.mount("/", StaticFiles(directory="dist", html=True), name="static")
+
