@@ -2,12 +2,14 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from chat_bot import ask_groq
+from fastapi.staticfiles import StaticFiles
 
 app = FastAPI()
+app.mount("/", StaticFiles(directory="dist", html=True), name="static")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Или ["http://localhost:5173"] за production
+    allow_origins=["*"],  
     allow_methods=["*"],
     allow_headers=["*"],
 )
