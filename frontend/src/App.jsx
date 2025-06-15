@@ -22,7 +22,7 @@ function App() {
     setIsTyping(true);
 
     try {
-      const response = await fetch('http://localhost:8000/api/mental-health-chat', {
+      const response = await fetch('https://psychology-h57h.onrender.com', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ messages: updatedChats[activeChatIndex].messages }),
